@@ -5,8 +5,8 @@
     {
       "name": "vibelog",
       "source": ".",
-      "description": "Auto-logs Claude Code activity and generates a daily summary of all AI-assisted code changes, with mermaid charts.",
-      "version": "0.1.0"
+      "description": "Auto-logs AI coding activity across Claude Code, Codex CLI, and Cursor; generates a daily summary with mermaid charts.",
+      "version": "0.2.0"
     }
   ]
 }

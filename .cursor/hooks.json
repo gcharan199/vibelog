@@ -1,0 +1,11 @@
+{
+  "_comment": "Cursor 1.7+ hooks. Cursor uses camelCase event names and a flatter schema (no nested {hooks:[...]} array). Hook commands need absolute paths — install.sh writes a copy at ~/.cursor/hooks.json with __VIBELOG_ROOT__ replaced.",
+  "version": 1,
+  "hooks": {
+    "sessionStart":       [{ "command": "__VIBELOG_ROOT__/hooks/session-start.sh cursor" }],
+    "sessionEnd":         [{ "command": "__VIBELOG_ROOT__/hooks/session-end.sh cursor" }],
+    "beforeSubmitPrompt": [{ "command": "__VIBELOG_ROOT__/hooks/log-prompt.sh cursor" }],
+    "postToolUse":        [{ "command": "__VIBELOG_ROOT__/hooks/log-tool-use.sh cursor" }],
+    "stop":               [{ "command": "__VIBELOG_ROOT__/hooks/log-stop.sh cursor" }]
+  }
+}

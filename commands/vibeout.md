@@ -16,14 +16,14 @@ Follow these steps exactly. Do **not** invent data — only report what's in the
 - Otherwise: it must match the regex `^[0-9]{4}-[0-9]{2}-[0-9]{2}$`. If it does not, respond **`Bad date. Use YYYY-MM-DD.`** and stop. Do not run any further commands. (This regex check defeats shell injection; still quote the variable in every command below.)
 
 ### 2. Locate log file
-Compute `LOG="$HOME/.claude/vibelog/logs/<date>.jsonl"` and `REPORT="$HOME/.claude/vibelog/reports/<date>.md"`.
+Compute `LOG="$HOME/.vibelog/logs/<date>.jsonl"` and `REPORT="$HOME/.vibelog/reports/<date>.md"`.
 
 If `[ ! -s "$LOG" ]` (missing or empty), respond **`No vibelog data for <date> at <LOG>.`** and stop.
 
 ### 3. Extract structured stats with one Bash call
 
 ```bash
-LOG="$HOME/.claude/vibelog/logs/<date>.jsonl"
+LOG="$HOME/.vibelog/logs/<date>.jsonl"
 jq -s '{
   total: length,
   prompts: [.[] | select(.event=="user_prompt")] | length,
@@ -89,7 +89,7 @@ If zero hours have events: replace this block with a one-line italic placeholder
 
 ### 8. Write the report
 
-Use the Write tool to create `$HOME/.claude/vibelog/reports/<date>.md` with this exact section ordering:
+Use the Write tool to create `$HOME/.vibelog/reports/<date>.md` with this exact section ordering:
 
 ```markdown
 # vibelog — <date>

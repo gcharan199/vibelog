@@ -1,0 +1,34 @@
+{
+  "_comment": "Codex CLI hooks. Codex hook events are SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, PermissionRequest, Stop. There is NO SessionEnd. Hook commands need absolute paths — install.sh writes a copy of this file at ~/.codex/hooks.json with __VIBELOG_ROOT__ replaced. Codex hooks require `codex_hooks = true` under [features] in ~/.codex/config.toml.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "__VIBELOG_ROOT__/hooks/session-start.sh codex" }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "__VIBELOG_ROOT__/hooks/log-prompt.sh codex" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          { "type": "command", "command": "__VIBELOG_ROOT__/hooks/log-tool-use.sh codex" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "__VIBELOG_ROOT__/hooks/log-stop.sh codex" }
+        ]
+      }
+    ]
+  }
+}

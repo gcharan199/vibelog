@@ -13,7 +13,7 @@ The user's intent text is `$ARGUMENTS`.
    `Usage: /vibein <what you're working on today>` and stop.
 
 2. Append one JSONL line `{ts, event:"intent", text:<intent>}` to today's log file
-   `$HOME/.claude/vibelog/logs/$(date +%Y-%m-%d).jsonl`. Use `jq -n` to ensure
+   `$HOME/.vibelog/logs/$(date +%Y-%m-%d).jsonl`. Use `jq -n` to ensure
    the text is JSON-escaped safely (handles quotes, backslashes, newlines).
 
    Concretely, run via Bash — substitute the user's intent into `<INTENT>` exactly as typed,
@@ -21,7 +21,7 @@ The user's intent text is `$ARGUMENTS`.
    or shell-escaping pitfalls):
 
    ```bash
-   LOG="$HOME/.claude/vibelog/logs/$(date +%Y-%m-%d).jsonl"
+   LOG="$HOME/.vibelog/logs/$(date +%Y-%m-%d).jsonl"
    TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
    mkdir -p "$(dirname "$LOG")"
    printf '%s' '<INTENT>' | jq -cRs --arg ts "$TS" '{ts:$ts, event:"intent", text:.}' >> "$LOG"
