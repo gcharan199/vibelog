@@ -1,0 +1,9 @@
+{
+  "name": "vibelog",
+  "version": "0.1.0",
+  "description": "Auto-logs Claude Code activity and generates a daily summary of all AI-assisted code changes.",
+  "author": {
+    "name": "Charan Goriparthi"
+  },
+  "keywords": ["logging", "summary", "productivity", "ai-assisted", "claude-code"]
+}
